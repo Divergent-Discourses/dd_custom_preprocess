@@ -107,7 +107,7 @@ You could use this command to adjust the k-value and window size used during Sau
 bash preprocess_driver.sh path/to/source/directory path/to/destination/directory --k_val 0.22 --window_size 301
 ```
 
-You could use this command to only preprocess images with '_archive_' in the filename, while ensuring all remaining images meet basic Transkribus image upload requirements
+You could use this command to only preprocess images with '\_archive\_' in the filename, while ensuring all remaining images meet basic Transkribus image upload requirements
 (e.g. file size, image format):
 
 ```bash
