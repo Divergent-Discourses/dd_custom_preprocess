@@ -1,0 +1,4 @@
+pyiqa==0.1.11
+scikit-image==0.23.2
+numpy==1.26.4
+regex==2024.7.24
