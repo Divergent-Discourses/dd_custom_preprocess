@@ -1,5 +1,5 @@
 # Image Preprocessing Pipeline
-[DOI 10.5281/zenodo.14336035](http://doi.org/10.5281/zenodo.14336035)
+[DOI 10.5281/zenodo.14523007](http://doi.org/10.5281/zenodo.14523007)
 
 Preprocesses images of written documents to prepare them for optical character recognition (OCR) or handwritten text recognition (HTR). Applies one of two pipelines to an image depending on its quality. 
 
