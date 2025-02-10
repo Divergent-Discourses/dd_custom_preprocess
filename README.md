@@ -38,15 +38,28 @@ If image is 'good quality':
 - [optional: use -ce flag] Performs contrast stretching and the adaptive histogram equalisation (CLAHE) contrast enhancement method
 - Performs **SBB binarisation** (machine learning approach): https://github.com/qurator-spk/sbb_binarization/
 - Deskews images using projection profiling
-
+- 
 
 ## Installation
 
 Using the command line, navigate to the location in which you wish to install the code. Then, download the code.
 
+
+This repository has two branches to support different environments:  
+
+- **`main` branch** – Optimized for macOS. Use this if running locally on a Mac.  
+- **`server-fix` branch** – Configured for server environments with GPU support. Use this if running on a server.  
+
+To clone the appropriate version:  
+
 ```bash
+# For macOS (default)
 git clone https://github.com/Divergent-Discourses/dd_custom_preprocess.git
+
+# For server version
+git clone --branch server-fix --single-branch https://github.com/Divergent-Discourses/dd_custom_preprocess.git
 ```
+
 
 Download the sbb_binarization model from here: https://github.com/qurator-spk/sbb_binarization/releases/download/v0.0.11/saved_model_2020_01_16.zip
 
