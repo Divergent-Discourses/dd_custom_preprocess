@@ -47,7 +47,7 @@ Using the command line, navigate to the location in which you wish to install th
 
 This repository has two branches to support different environments:  
 
-- **`main` branch** – Optimized for macOS. Use this if running locally on a Mac.  
+- **`main` branch** – Optimised for macOS. Use this if running locally on a Mac.  
 - **`server-fix` branch** – Configured for server environments with GPU support. Use this if running on a server.  
 
 To clone the appropriate version:  
