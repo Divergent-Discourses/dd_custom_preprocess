@@ -1,5 +1,9 @@
 #!/bin/bash
 
+module load Anaconda3  # Load Anaconda if not already loaded
+conda init bash  # Initialise Conda for Bash
+source ~/.bashrc  # Reload the shell configuration
+
 # bash script takes same arguments as custom_preprocess_a.py and supplies them
 # to the python script
 
@@ -83,10 +87,9 @@ function check_env() {
 if ! check_env "custom_preprocess_a"; then
     echo "Creating environment 'custom_preprocess_a'..."
     conda create -n custom_preprocess_a "python==3.10.9"
-    source ~/.zshrc
+    source activate base
     conda activate custom_preprocess_a
     pip install -r requirements_a.txt
-    source ~/.zshrc
     conda deactivate
 else
     echo "Environment 'custom_preprocess_a' already exists. Skipping creation."
@@ -95,19 +98,16 @@ fi
 # Set up environment for custom_preprocess_b
 if ! check_env "custom_preprocess_b"; then
     echo "Creating environment 'custom_preprocess_b'..."
-    conda create -n custom_preprocess_b "python<=3.10"
-    source ~/.zshrc
+    conda create -n custom_preprocess_b "python==3.10.0"
+    source activate base
     conda activate custom_preprocess_b
     pip install -r requirements_b.txt
-    conda install "tensorflow<=2.11.1"
-    conda install "readline==8.2"
-    source ~/.zshrc
     conda deactivate
 else
     echo "Environment 'custom_preprocess_b' already exists. Skipping creation."
 fi
 
-source ~/.zshrc
+source activate base
 conda activate custom_preprocess_a
 python custom_preprocess_a.py "$source_folder" "$destination_folder" \
     --sauv_k_val "$sauv_k_val" \
@@ -115,11 +115,9 @@ python custom_preprocess_a.py "$source_folder" "$destination_folder" \
     $contrast_enhance_flag \
     --regex "$regex" \
     --goodbad_threshold "$goodbad_threshold"
-source ~/.zshrc
 conda deactivate
 
-source ~/.zshrc
+source activate base
 conda activate custom_preprocess_b
 python custom_preprocess_b.py
-source ~/.zshrc
 conda deactivate
