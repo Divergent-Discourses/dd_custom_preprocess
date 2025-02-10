@@ -69,6 +69,12 @@ Running the bash driver script for the first time will install required packages
 Place all images you want to preprocess in a directory. The directory can contain sub-directories if you want to keep image sub-groups.
 
 
+If you are running this code on a server, ensure that the following dependencies are loaded before executing the script (e.g. load in your Slurm job script). This is necessary for TensorFlow to detect and utilise a GPU at runtime:
+
+* CUDA/12.2.0
+* cuDNN/8.9.2.26-CUDA-12.2.0
+
+
 Run the script from the command line once you have navigated to the location of the dd_custom_preprocess directory like this:
 
 ```bash
