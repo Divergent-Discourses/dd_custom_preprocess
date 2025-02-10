@@ -24,9 +24,23 @@ from sbb_binarize.sbb_binarize import SbbBinarizer
 import os
 import dd_preprocess
 import cv2
+import tensorflow as tf
 
 # Define your model directory, input image, and output image paths
 model_dir = "./saved_model_2020_01_16"
+
+gpus = tf.config.list_physical_devices('GPU')
+if gpus:
+    print(f"GPUs detected: {gpus}")
+    try:
+        tf.config.experimental.set_memory_growth(gpus[0], True)
+    except RuntimeError as e:
+        print(f"Error setting memory growth: {e}")
+else:
+    print("No GPU detected. Using CPU.")
+
+# tf.config.set_visible_devices([], 'GPU')  # Force CPU usage
+
 
 # load list of good quality image filepaths - these should be preprocessed using sbb_binarisation
 with open('sbb_filepath_list.pkl', 'rb') as f:
@@ -68,10 +82,3 @@ if len(sbb_filepaths) == 0:
     pass
 else:
     print("Finished binarising good quality images")
-
-
-
-
-
-
-
