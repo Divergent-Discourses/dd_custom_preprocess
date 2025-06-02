@@ -4,6 +4,7 @@ import os  # Deals with path names
 import dd_preprocess
 from tqdm import tqdm  # For progress loading bar
 import cv2  # For image preprocessing
+from PIL import Image
 
 
 # Common image file extensions
@@ -137,8 +138,9 @@ def process_before_sbb(filepaths, contrast_enhance=None):
                             clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
                             image = clahe.apply(cv2.normalize(image, None, 0, 255, cv2.NORM_MINMAX))
 
-                        # Write image to path
-                        cv2.imwrite(file, image)
+                        # Save image with 300 DPI using Pillow
+                        img_pil = Image.fromarray(image, mode='L')
+                        img_pil.save(file, dpi=(300, 300))
 
                         # Update tqdm progress bar
                         pbar.update(1)
